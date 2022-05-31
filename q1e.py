@@ -55,8 +55,8 @@ for vItem in vList:
 
 
 ans = min(d for d in delayList if d <= 0.2)
-print("Least amount of energy required ", energyList[delayList.index(ans)]) #151.7
-print("Minimum number of cores needed ", coreList[delayList.index(ans)]) #27
+print("Least amount of energy required ", energyList[delayList.index(ans)])
+print("Minimum number of cores needed ", coreList[delayList.index(ans)]) 
 print("Energy list ", len(energyList), "\n", energyList)
 print("Time list ", len(delayList), "\n", delayList)
 print("Core List", len(coreList), "\n", coreList)
