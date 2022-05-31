@@ -7,7 +7,7 @@ vFinal = 1.0
 vInit = 1.3
 vThresh = 0.9
 vStat = 5
-interval = 0.001
+interval = 0.01
 
 powerInit = 50
 
@@ -41,7 +41,7 @@ for vItem in vList:
     time1  = 2/freq
     timeNew = (parallelTimePrecent)*time1
     float("{:.2f}".format(timeNew))
-    delayList.append(timeNew)
+    delayList.append(timeNew/10)
 
     # number of cores 
     coreList.append(timeNew/0.2)
@@ -53,14 +53,18 @@ for vItem in vList:
     energyTotal = energyList.append(energyTotal)
     
 
-print("Least amount of energy required ",min(energyList)) #151.7
-print("Minimum number of cores needed ", coreList[energyList.index(min(energyList))]) #27
 
-plt.figure()
-plt.plot(delayList, energyList, marker='o')
+ans = min(d for d in delayList if d <= 0.2)
+print("Least amount of energy required ", energyList[delayList.index(ans)]) #151.7
+print("Minimum number of cores needed ", coreList[delayList.index(ans)]) #27
+print("Energy list ", len(energyList), "\n", energyList)
+print("Time list ", len(delayList), "\n", delayList)
+print("Core List", len(coreList), "\n", coreList)
+
+plt.figure(1)
+plt.plot(delayList, energyList)
 plt.title("Energy versus Time plot for Question 1E")
 plt.xlabel("Time, s")
 plt.ylabel("Energy, J")
 plt.show() 
 
- 
